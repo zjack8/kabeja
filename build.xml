@@ -98,8 +98,6 @@
 			</fileset>
 		</copy>
 
-
-
 		<copy todir="${dist}/${legal}">
 			<fileset dir="${legal}">
 				<include name="**/*" />
@@ -117,7 +115,6 @@
 			</fileset>
 		</copy>
 
-
 		<copy todir="${dist}/${samples}">
 			<fileset dir="${samples}">
 				<include name="**/*" />
@@ -125,8 +122,6 @@
 				<exclude name="**/cvs" />
 			</fileset>
 		</copy>
-
-
 
 		<copy todir="${build}/${classes}/${icons}">
 			<fileset dir="${icons}">
@@ -154,11 +149,9 @@
 		<delete file="${manifest}" />
 	</target>
 
-
 	<target name="dist" depends="config,core.jars,build-blocks,blocks2ui,blocks2processing,blocks2configuration" description="Building  Kabeja (default).">
 
 	</target>
-
 
 	<target name="complete-release" depends="clean">
 		<antcall target="source-release" />
@@ -169,7 +162,6 @@
 		<antcall target="source-release" />
 		<antcall target="binary-release" />
 	</target>
-
 
 	<target name="binary-release" description="Creates a full source realease.">
 		<antcall target="binary-dist">
@@ -193,7 +185,6 @@
 			<fileset file="INSTALL" />
 		</copy>
 
-
 		<copy todir="${tempdir}/${releasename}-${version-number}">
 			<fileset dir="${dist}" />
 		</copy>
@@ -206,8 +197,6 @@
 		<delete file="${packages}/${releasename}.tar" />
 		<delete dir="${tempdir}" />
 	</target>
-
-
 
 	<target name="source-release" description="Creates a full source realease.">
 		<antcall target="source-dist">
@@ -222,11 +211,8 @@
 		</antcall>
 	</target>
 
-
-
 	<target name="source-dist" depends="" if="version-number">
 		<delete dir="${tempdir}" />
-
 
 		<mkdir dir="${tempdir}/${releasename}-${version-number}" />
 		<copy todir="${tempdir}/${releasename}-${version-number}">
@@ -240,8 +226,6 @@
 			<fileset file="kabeja.exe" />
 			<fileset file="kabeja.sh" />
 		</copy>
-
-
 
 		<mkdir dir="${tempdir}/${releasename}-${version-number}/${src}" />
 		<copy todir="${tempdir}/${releasename}-${version-number}/${src}">
@@ -259,7 +243,6 @@
 		<copy todir="${tempdir}/${releasename}-${version-number}/${blocks}">
 			<fileset dir="${blocks}" />
 		</copy>
-
 
 		<!-- the tools -->
 		<mkdir dir="${tempdir}/${releasename}-${version-number}/${tools}" />
@@ -335,9 +318,6 @@
 		</javadoc>
 	</target>
 
-
-
-
 	<!-- new manifest section here -->
 	<target name="manifest">
 		<fileset dir="${libs}" id="jar.files">
@@ -351,7 +331,6 @@
 			<attribute name="Class-Path" value="${jars}" />
 		</manifest>
 	</target>
-
 
 	<target name="eclipse-project" description="create the project-files for Eclipse">
 		<!-- the project file -->
@@ -412,7 +391,6 @@
 					/&gt;${line.separator}</echo>
 			</sequential>
 		</for>
-
 
 		<echo file=".classpath" append="true"> &lt;classpathentry
 			kind=&quot;output&quot; path=&quot;build/java&quot;
@@ -540,15 +518,11 @@
    	    </echo>
 	</target>
 
-
 	<target name="blocks2configuration">
 		<antcall target="blockXSLMerge">
 			<param name="source.xml.file" value="configuration" />
 		</antcall>
 	</target>
-
-
-
 
 	<target name="blocks2processing">
 		<antcall target="blockXSLMerge">
@@ -556,14 +530,11 @@
 		</antcall>
 	</target>
 
-
-
 	<target name="blocks2ui">
 		<antcall target="blockXSLMerge">
 			<param name="source.xml.file" value="ui" />
 		</antcall>
 	</target>
-
 
 	<target name="blockXSLMerge" if="source.xml.file">
 		<mkdir dir="${build}/${classes}/${conf}" />
